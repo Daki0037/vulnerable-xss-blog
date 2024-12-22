@@ -1,0 +1,33 @@
+.learnMoreTitle {
+    font-family: 'Sora';
+    font-size: 32px;
+}
+
+.learnMoreDescription {
+    font-family: 'Sora';
+    margin-top: 30px;
+    font-size: 18px;
+    line-height: 27px;
+    margin-bottom: 50px;
+}
+
+.learnMoreCardImage {
+    width: 100%;
+    height: 235px;
+    border-radius: 15px;
+    border: 1px solid black;
+}
+
+.learnMoreCardTitle {
+    font-family: 'Sora';
+    font-size: 21px;
+    margin-top: 15px;
+    margin-bottom: 8px;
+}
+
+.learnMoreCardText {
+    font-family: 'Sora';
+    font-size: 15px;
+    line-height: 25px;
+    color: #527699;
+}

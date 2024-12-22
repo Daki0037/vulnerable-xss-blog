@@ -1,0 +1,23 @@
+.readyToTryTitle {
+    font-family: 'Sora';
+    text-align: center;
+    margin-top: 150px;
+    font-size: 37px;
+}
+
+.readyToTryText {
+    font-family: 'Sora';
+    text-align: center;
+    margin-top: 15px;
+    margin-bottom: 30px;
+    font-size: 20px;
+    font-weight: 300;
+}
+
+.readyToTryButton {
+    width: 200px;
+    height: 45px;
+    font-size: 15px;
+    font-family: 'Sora';
+    margin-top: 40px;
+}

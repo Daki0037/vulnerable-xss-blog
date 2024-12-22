@@ -1,0 +1,17 @@
+
+.pcImage {
+    width: 95%;
+    border-radius: 15px;
+}
+
+.landingPageTitle {
+    font-family: 'Sora';
+    font-size: 40px;
+}
+
+.landingPageDescription {
+    font-family: 'Sora';
+    margin-top: 2%;
+    font-size: 18px;
+    line-height: 27px;
+}
