@@ -4,8 +4,21 @@ import BasicInfo from './components/BasicInfo';
 import LearnMore from './components/LearnMore';
 import ReadyToTry from './components/ReadyToTry';
 import Footer from '../../components/Footer';
+import { useEffect } from 'react';
+import { useNavigate } from 'react-router-dom';
 
-function Home() {
+function LandingPage() {
+
+    const navigate = useNavigate();
+
+    useEffect(() => {
+        const isLoggedIn = localStorage.getItem('jwtToken') !== null;
+        console.log(isLoggedIn);
+
+        if(isLoggedIn) {
+            navigate('/home');
+        }
+    });
 
     return (
         <>
@@ -19,4 +32,4 @@ function Home() {
     );
 }
 
-export default Home;
+export default LandingPage;

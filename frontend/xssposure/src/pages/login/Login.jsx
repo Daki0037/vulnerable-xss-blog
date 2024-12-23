@@ -8,11 +8,21 @@ import Typography from "@mui/material/Typography";
 import Container from "@mui/material/Container";
 import Footer from '../../components/Footer';
 import { useNavigate } from "react-router-dom";
-import { useState, useRef } from "react";
+import { useState, useRef, useEffect } from "react";
+import axios from "axios";
 
 function Login() {
 
     const navigate = useNavigate();
+    const apiUrl = import.meta.env.VITE_API_URL;
+
+    useEffect(() => {
+        const isLoggedIn = localStorage.getItem("jwtToken") !== null;
+
+        if(isLoggedIn) {
+            navigate('/home');
+        }
+    });
 
     const [formData, setFormData] = useState({
         username: "",
@@ -61,10 +71,23 @@ function Login() {
         passwordRef.current.focus();
         valid = false;
         }
-    
-        console.log("Form submitted:", formData);
 
+        login(formData);
     };
+
+    const login = async(formData) => {
+        try {
+            const response = await axios.post('http://localhost:8080/api/v1/auth/login', {
+              username: formData.username,
+              password: formData.password
+            });
+            
+            localStorage.setItem('jwtToken', response.data.jwt);
+            navigate("/");
+        } catch (error) {
+            console.error('Error logging in:', error.response ? error.response.data : error.message);
+        }
+    }
 
     const handleReturnButton = () => {
         navigate("/");
@@ -117,7 +140,7 @@ function Login() {
                 inputRef={passwordRef}
             />
             <FormControlLabel
-                control={<Checkbox value="remember" color="primary" checked={formData.rememberMe} onChange={handleChange}/>}
+                control={<Checkbox value="remember" color="primary"/>}
                 label="Zapamti me"
             />
             <Button

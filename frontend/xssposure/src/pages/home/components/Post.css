@@ -1,0 +1,33 @@
+.postUserPfp {
+    width: 50px;
+    margin-left: 10px;
+    margin-top: 10px;
+}
+
+.postHandle {
+    color: gray;
+    font-weight: 300;
+}
+
+.postContent {
+    margin-top: 10px;
+    margin-left: 15px;
+    font-family: 'Sora';
+    padding-bottom: 15px;
+}
+
+.postTimestamp {
+    color: gray;
+    font-family: 'Sora';
+    font-weight: 300;
+    margin-left: 15px;
+    padding-bottom: 10px;
+}
+
+.postStats {
+    font-family: 'Sora';
+    margin-left: 50px;
+    padding-top: 10px;
+    padding-bottom: 10px;
+    font-weight: 600;
+}
