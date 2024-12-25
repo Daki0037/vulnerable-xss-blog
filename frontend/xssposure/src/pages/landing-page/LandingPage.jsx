@@ -13,7 +13,6 @@ function LandingPage() {
 
     useEffect(() => {
         const isLoggedIn = localStorage.getItem('jwtToken') !== null;
-        console.log(isLoggedIn);
 
         if(isLoggedIn) {
             navigate('/home');

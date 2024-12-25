@@ -23,7 +23,7 @@ function Header() {
     };
 
     return (
-        <AppBar className='homeHeader' position='static'>
+        <AppBar className='homeHeader' position='sticky'>
             <Toolbar className='homeHeaderToolbar'>
             <Typography variant="h6" component="div" sx={{ flexGrow: 1, fontWeight: '400', fontFamily: 'Sora' }}>
                 <Link href="/" sx={{ textDecoration: 'none', color: 'black' }}>XSSPosure</Link>

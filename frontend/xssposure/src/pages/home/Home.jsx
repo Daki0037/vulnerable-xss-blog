@@ -3,21 +3,21 @@ import Header from '../../components/Header';
 import Sidebar from '../../components/Sidebar';
 import Posts from './components/Posts';
 import { Container, Grid2 } from '@mui/material';
-import { useEffect, useState } from 'react';
+import { useEffect } from 'react';
 import { useNavigate } from 'react-router-dom';
 
 function Home() {
 
     const navigate = useNavigate();
-    const [posts, setPosts] = useState([]);
 
     useEffect(() => {
         const isLoggedIn = localStorage.getItem("jwtToken") !== null;
 
-        if(!isLoggedIn) {
+        if (!isLoggedIn) {
             navigate("/");
         }
-    });
+
+    }, [navigate]);
 
     return (
         <>
@@ -28,7 +28,7 @@ function Home() {
                         <Sidebar></Sidebar>
                     </Grid2>
                     <Grid2 size={10}>
-                        <Posts posts={posts}></Posts>
+                        <Posts></Posts>
                     </Grid2>
                 </Grid2>
             </Container>

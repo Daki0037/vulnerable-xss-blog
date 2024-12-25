@@ -9,6 +9,7 @@
     font-size: 18px;
     line-height: 27px;
     margin-bottom: 50px;
+    text-align: justify;
 }
 
 .learnMoreCardImage {
@@ -30,4 +31,5 @@
     font-size: 15px;
     line-height: 25px;
     color: #527699;
+    text-align: justify;
 }

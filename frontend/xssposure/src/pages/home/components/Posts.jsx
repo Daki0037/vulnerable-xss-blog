@@ -2,13 +2,36 @@ import './Posts.css';
 import { Box, InputBase, Paper, IconButton } from '@mui/material';
 import SearchIcon from '@mui/icons-material/Search';
 import Post from './Post';
+import { useEffect, useState } from 'react';
+import axios from 'axios';
 
-function Posts({ posts }) {
+function Posts() {
+    const [posts, setPosts] = useState([]);
+    const [loading, setLoading] = useState(true);
+    const [error, setError] = useState(null);
 
     const postsContainerStyle = {
         marginTop: '20px',
         marginLeft: '100px'
     };
+
+    useEffect(() => {
+        const fetchPosts = async () => {
+            try {
+                const token = localStorage.getItem('jwtToken');
+                const response = await axios.get('http://localhost:8080/api/v1/posts', {
+                    headers: { Authorization: `Bearer ${token}` }
+                });
+                setPosts(response.data);
+            } catch (err) {
+                setError('Failed to load posts');
+            } finally {
+                setLoading(false);
+            }
+        };
+
+        fetchPosts();
+    }, []);
 
     return (
         <Box sx={postsContainerStyle}>
@@ -27,7 +50,21 @@ function Posts({ posts }) {
                 />
             </Paper>
             <Box>
-                <Post />
+                {loading ? (
+                    <p className='postDefaultText'>Loading posts...</p>
+                ) : error ? (
+                    <p className='postDefaultText'>{error}</p>
+                ) : (
+                    <Box>
+                        {posts.length === 0 ? (
+                            <p>No posts available.</p>
+                        ) : (
+                            posts.map((post) => (
+                                <Post key={post.id} post={post} />
+                            ))
+                        )}
+                    </Box>
+                )}
             </Box>
         </Box>
     );

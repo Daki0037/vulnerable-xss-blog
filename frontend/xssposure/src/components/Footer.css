@@ -2,3 +2,7 @@
     font-family: 'Sora';
     font-weight: 500;
 }
+
+.footerContainer {
+    border-top: 1px solid lightgray;
+}

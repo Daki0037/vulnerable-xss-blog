@@ -4,6 +4,8 @@ import com.vulnerable.xssposure.model.Post;
 import com.vulnerable.xssposure.service.PostService;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.http.ResponseEntity;
+import org.springframework.security.core.annotation.AuthenticationPrincipal;
+import org.springframework.security.core.userdetails.UserDetails;
 import org.springframework.web.bind.annotation.*;
 
 import java.util.List;
@@ -30,8 +32,8 @@ public class PostController {
     }
 
     @PostMapping("/insert")
-    public ResponseEntity<String> insertPost(@RequestBody Post post) {
-        return postService.insert(post);
+    public ResponseEntity<String> insertPost(@RequestBody Post post, @AuthenticationPrincipal UserDetails userDetails) {
+        return postService.insert(post, userDetails);
     }
 
 }

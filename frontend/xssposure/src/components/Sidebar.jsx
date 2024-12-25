@@ -37,7 +37,10 @@ function Sidebar() {
                 height: '90vh',
                 justifyContent: 'space-between',
                 padding: '10px',
-                borderRight: '1px solid lightgray' 
+                borderRight: '1px solid lightgray',
+                position: 'sticky',
+                top: 70,
+                zIndex: 1000,
             }}
         >
             <Box>
