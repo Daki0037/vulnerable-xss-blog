@@ -35,7 +35,6 @@ function Posts() {
 
     return (
         <Box sx={postsContainerStyle}>
-            <h1 className='homePageTitle'>Početna strana</h1>
             <Paper
                 component="form"
                 sx={{ p: '2px 4px', display: 'flex', alignItems: 'center', width: '80%', background: '#E7EEF2', marginTop: '25px', marginBottom: '40px' }}

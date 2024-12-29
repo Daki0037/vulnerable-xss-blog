@@ -34,7 +34,7 @@ function Sidebar() {
             sx={{
                 display: 'flex',
                 flexDirection: 'column',
-                height: '90vh',
+                height: '87vh',
                 justifyContent: 'space-between',
                 padding: '10px',
                 borderRight: '1px solid lightgray',

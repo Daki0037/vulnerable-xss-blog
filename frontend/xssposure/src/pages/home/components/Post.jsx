@@ -36,7 +36,7 @@ function Post(post) {
     }, [post.post.content]);
 
     return (
-        <Paper sx={paperStyle}>
+        <Paper sx={paperStyle} elevation={5}>
             <Box display="flex">
                 <img src={UserImage} alt='user' className='postUserPfp' />
                 <Box sx={{marginTop: '10px', marginLeft: '15px', fontFamily: 'Sora'}}>
@@ -50,7 +50,7 @@ function Post(post) {
             />
             <p className='postTimestamp'>{formattedTimestamp}</p>
             <Divider sx={{width: '98%', marginX: 'auto'}} />
-            <p className='postStats'>{post?.post.commentCount || 0} <span style={{paddingRight: '60px'}}>Komentara</span> {post?.post.likeCount || 0} Sviđanja</p>
+            <p className='postStats'>{post?.post.commentCount || 0} <span style={{paddingRight: '60px'}}>Komentar</span> {post?.post.likeCount || 0} Sviđanje</p>
             <Divider sx={{width: '98%', marginX: 'auto'}} />
             <Box sx={{paddingBottom: '2px', paddingTop: '2px'}}>
                 <IconButton type='button' sx={{marginLeft: 5}}>

@@ -25,7 +25,7 @@ public class PostService {
     }
 
     public List<Post> getAll() {
-        return postRepository.findAll();
+        return postRepository.findAllByOrderByPostedAtDesc();
     }
 
     public Post getById(int id) {

@@ -7,6 +7,7 @@ import Box from "@mui/material/Box";
 import Typography from "@mui/material/Typography";
 import Container from "@mui/material/Container";
 import Footer from '../../components/Footer';
+import { Snackbar } from "@mui/material";
 import { useNavigate } from "react-router-dom";
 import { useState, useRef, useEffect } from "react";
 import axios from "axios";
@@ -15,6 +16,8 @@ function Login() {
 
     const navigate = useNavigate();
     const apiUrl = import.meta.env.VITE_API_URL;
+
+    let [isSnackbarOpen, setSnackbarOpen] = useState(false);
 
     useEffect(() => {
         const isLoggedIn = localStorage.getItem("jwtToken") !== null;
@@ -57,23 +60,29 @@ function Login() {
         let valid = true;
 
         if (!formData.username) {
-        setErrors((prevErrors) => ({
-            ...prevErrors,
-            username: "Korisničko ime je obavezno.",
-        }));
-        usernameRef.current.focus();
-        valid = false;
+            setErrors((prevErrors) => ({
+                ...prevErrors,
+                username: "Korisničko ime je obavezno.",
+            }));
+            usernameRef.current.focus();
+            valid = false;
+            return;
         } else if (!formData.password) {
-        setErrors((prevErrors) => ({
-            ...prevErrors,
-            password: "Lozinka je obavezna.",
-        }));
-        passwordRef.current.focus();
-        valid = false;
+            setErrors((prevErrors) => ({
+                ...prevErrors,
+                password: "Lozinka je obavezna.",
+            }));
+            passwordRef.current.focus();
+            valid = false;
+            return;
         }
 
         login(formData);
     };
+
+    const handleCloseSnackbar = () => {
+        setSnackbarOpen(false);
+    }
 
     const login = async(formData) => {
         try {
@@ -85,6 +94,7 @@ function Login() {
             localStorage.setItem('jwtToken', response.data.jwt);
             navigate("/");
         } catch (error) {
+            setSnackbarOpen(true);
             console.error('Error logging in:', error.response ? error.response.data : error.message);
         }
     }
@@ -147,14 +157,14 @@ function Login() {
                 type="submit"
                 fullWidth
                 variant="contained"
-                sx={{ mt: 3, mb: 2 }}
+                sx={{ mt: 3, mb: 2, height: '40px' }}
             >
                 Prijavite se
             </Button>
             <Button
                 fullWidth
                 variant="outlined"
-                sx={{ mb: 2 }}
+                sx={{ mb: 2, height: '40px' }}
                 onClick={handleReturnButton}
             >
                 Povratak na početnu stranu
@@ -162,6 +172,13 @@ function Login() {
             </Box>
         </Box>
         </Container>
+        <Snackbar
+            open={isSnackbarOpen}
+            onClose={handleCloseSnackbar}
+            anchorOrigin={{ vertical: 'top', horizontal: 'center' }}
+            autoHideDuration={3000}
+            message="Korisničko ime ili lozinka nije tačna."
+        />
         <Footer></Footer>
     </>
 }

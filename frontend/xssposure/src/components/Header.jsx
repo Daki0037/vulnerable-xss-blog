@@ -19,7 +19,7 @@ function Header() {
 
     const buttonStyle = {
         fontFamily: 'Sora',
-        fontSize: '15px'
+        fontSize: '15px',
     };
 
     return (
